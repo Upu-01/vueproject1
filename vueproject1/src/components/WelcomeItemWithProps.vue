@@ -1,61 +1,31 @@
 <script setup lang="ts">
-  defineProps<{
-    msg: string,
-    msg2: string,
-    content: string,
-    heading: string,
-    icon: any
-  }>();
+import { defineProps } from 'vue';
 
-  
+defineProps({
+  icon: {
+    type: Object,
+    required: true
+  },
+  heading: String,
+  content: String
+});
 </script>
 
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }} {{ msg2 }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vite.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
-    <div class="item">
-      <i>
-        <slot name="icon">{{icon}}</slot>
-      </i>
-      <div class="details">
-        <h3>
-          <slot name="heading">{{heading}}</slot>
-        </h3>
-        <slot>{{content}}</slot>
-      </div>
+  <div class="item">
+    <i>
+      <component :is="icon" />
+    </i>
+    <div class="details">
+      <h3>
+        {{ heading }}
+      </h3>
+      <span v-html="content"></span>
     </div>
   </div>
- 
 </template>
 
 <style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
-}
-
-h3 {
-  font-size: 1.2rem;
-}
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-}
   .item {
     margin-top: 2rem;
     display: flex;
@@ -126,5 +96,4 @@ h3 {
       display: none;
     }
   }
-
 </style>
