@@ -2,6 +2,9 @@
   import HelloWorld from './components/HelloWorld.vue'
   import TheWelcome from './components/TheWelcome.vue'
   import Router from './Router.vue'
+  import CreateProduct from './components/Product/CreateProduct.vue'
+  import UpdateProduct from './components/Product/UpdateProduct.vue'
+  import DeleteProduct from './components/Product/DeleteProduct.vue'
   import { BApp, BCard, BCardText, BButton } from 'bootstrap-vue-next'
 </script>
 
@@ -17,7 +20,9 @@
     </header>
     <main>
       <TheWelcome/>
-
+      <CreateProduct/>
+      <UpdateProduct/>
+      <DeleteProduct/>
     </main>
   </BApp>
 </template>

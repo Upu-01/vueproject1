@@ -3,6 +3,7 @@
     "bootstrap": "^4.6.2",
     "bootstrap-vue": "^2.23.1",
     "bootstrap-vue-next": "^0.40.5",
+    "pinia": "^3.0.3",
     "vue-router": "^4.5.1"
   }
 }
