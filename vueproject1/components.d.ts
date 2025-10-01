@@ -9,7 +9,9 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BButton: typeof import('bootstrap-vue-next/components/BButton')['BButton']
+    BCollapse: typeof import('bootstrap-vue-next/components/BCollapse')['BCollapse']
     BContainer: typeof import('bootstrap-vue-next/components/BContainer')['BContainer']
+    BDropdownItem: typeof import('bootstrap-vue-next/components/BDropdown')['BDropdownItem']
     BForm: typeof import('bootstrap-vue-next/components/BForm')['BForm']
     BFormGroup: typeof import('bootstrap-vue-next/components/BFormGroup')['BFormGroup']
     BFormInput: typeof import('bootstrap-vue-next/components/BFormInput')['BFormInput']
@@ -17,6 +19,12 @@ declare module 'vue' {
     BModal: typeof import('bootstrap-vue-next/components/BModal')['BModal']
     BNav: typeof import('bootstrap-vue-next/components/BNav')['BNav']
     BNavbar: typeof import('bootstrap-vue-next/components/BNavbar')['BNavbar']
+    BNavbarBrand: typeof import('bootstrap-vue-next/components/BNavbar')['BNavbarBrand']
+    BNavbarNav: typeof import('bootstrap-vue-next/components/BNavbar')['BNavbarNav']
+    BNavbarToggle: typeof import('bootstrap-vue-next/components/BNavbar')['BNavbarToggle']
+    BNavForm: typeof import('bootstrap-vue-next/components/BNav')['BNavForm']
+    BNavItem: typeof import('bootstrap-vue-next/components/BNav')['BNavItem']
+    BNavItemDropdown: typeof import('bootstrap-vue-next/components/BNav')['BNavItemDropdown']
     BTable: typeof import('bootstrap-vue-next/components/BTable')['BTable']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
@@ -29,5 +37,8 @@ declare module 'vue' {
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     WelcomeItem: typeof import('./src/components/icons/WelcomeItem.vue')['default']
     WelcomeItemWithProps: typeof import('./src/components/WelcomeItemWithProps.vue')['default']
+  }
+  export interface GlobalDirectives {
+    vBColorMode: typeof import('bootstrap-vue-next/directives/BColorMode')['vBColorMode']
   }
 }
