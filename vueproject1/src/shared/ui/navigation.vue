@@ -1,7 +1,7 @@
 <template>
-        <BNav class="navigation w-100 p-3" >
-            <BLink to="/Admin" class="link">Админка</BLink>
-        </BNav>
+    <BNav class="navigation p-3" >
+        <BLink to="/Admin" class="link">Админка</BLink>
+    </BNav>
 </template>
 
 <script setup lang="ts">
@@ -10,7 +10,6 @@ import { BLink } from 'bootstrap-vue-next'
 <style scoped>
 .navigation{
     background-color: rgb(203, 255, 238);
-
 }
 
 .link{

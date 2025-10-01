@@ -1,7 +1,8 @@
 <template>
   <BApp teleport-to="body">
-    <BContainer>
-      <Navigation></Navigation>
+    <Navigation></Navigation>
+    <BContainer fluid class="p-0">
+
     <router-view></router-view>
     </BContainer>
   </BApp>
