@@ -1,5 +1,5 @@
 export interface BaseEntity {
   id: number;
-  createdDate: Date;
-  updatedDate: Date;
+  createdDate?: Date;
+  updatedDate?: Date;
 }
