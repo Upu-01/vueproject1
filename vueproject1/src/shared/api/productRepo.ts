@@ -9,35 +9,6 @@ export interface IProductRepository {
   delete(id: number): Promise<void>;
 }
 
-// Тестовые данные
-// const testProducts: Product[] = [
-//   {
-//     id: 1,
-//     name: 'Test Product 1',
-//     subName: 'SubName 1',
-//     description: 'Description for product 1',
-//     images: [],
-//     price: 99.99,
-//     quantity: 10,
-//     badges: [],
-//     groups: [],
-//     createdDate: new Date(),
-//     updatedDate: new Date(),
-//   },
-//   {
-//     id: 2,
-//     name: 'Test Product 2',
-//     subName: 'SubName 2',
-//     description: 'Description for product 2',
-//     images: [],
-//     price: 149.99,
-//     quantity: 5,
-//     badges: [],
-//     groups: [],
-//     createdDate: new Date(),
-//     updatedDate: new Date(),
-//   },
-// ];
 
 export class TestProductRepo implements IProductRepository {
   private products: Product[] = [...testProducts];

@@ -1,10 +1,11 @@
-import { Image } from "./api/types/images";
-import { Badge } from "./api/types/badge";
+import type { Image } from "./api/types/images";
+import type { Badge } from "./api/types/badge";
+import type { BaseEntity } from "./api/types/types";
 
 
 
 
-export class Artycle {
+export interface Artycle extends BaseEntity{
     image: Image[];
     icon: Badge[];
     title: string;

@@ -1,9 +1,9 @@
-import { Product } from "./api/types/product";
-import { Artycle } from "./article";
+import type { Product } from "./api/types/product";
+import type { Artycle } from "./article";
 
 
 
-class Viewmodel {
+export interface Viewmodel {
     product: Product[];
     whyme: Artycle[];
     banner_carusel: Artycle[];
