@@ -1,5 +1,5 @@
 import type { Product } from './types/product';
-import { testProducts } from '../products';
+import { testProducts } from './products';
 
 export interface IProductRepository {
   getAll(): Promise<Product[]>;

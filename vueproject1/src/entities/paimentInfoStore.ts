@@ -1,15 +1,15 @@
-import { defineStore } from 'pinia';
-import type { Artycle } from "../article";
-import { type IWhyMeRepository, createWhyMeRepository } from './whyme_Repo';
+import { defineStore } from "pinia";
+import type { Artycle } from "@/shared/api/article";
+import { type IPaimentInfoRepository, createPaimentInfoRepository } from "@/shared/api/paimentInfo/paimentInfoRepo";
 
 export const useWhyMeStore = defineStore('whyMe', {
   state: () => ({
     articles: [] as Artycle[],
-    repository: null as IWhyMeRepository | null,
+    repository: null as IPaimentInfoRepository | null,
   }),
   actions: {
     init(useApi: boolean) {
-      this.repository = createWhyMeRepository(useApi);
+      this.repository = createPaimentInfoRepository(useApi);
       this.fetchArticles();
     },
 

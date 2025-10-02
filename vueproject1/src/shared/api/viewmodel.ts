@@ -1,4 +1,4 @@
-import type { Product } from "./api/types/product";
+import type { Product } from "./types/product";
 import type { Artycle } from "./article";
 
 
