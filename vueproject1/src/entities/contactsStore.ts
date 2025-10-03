@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import type { Artycle } from "@/shared/api/article";
 import { type IContactsRepository, createContactsRepository } from "@/shared/api/contacts/contactsRepo";
 
-export const useWhyMeStore = defineStore('whyMe', {
+export const useContactsStore = defineStore('Contacts', {
   state: () => ({
     articles: [] as Artycle[],
     repository: null as IContactsRepository | null,
