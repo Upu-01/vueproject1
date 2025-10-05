@@ -1,15 +1,15 @@
 import type { Product } from "./types/product";
-import type { Artycle } from "./article";
+import type { Article } from "./article";
 
 
 
 export interface Viewmodel {
     product: Product[];
-    whyme: Artycle[];
-    banner_carusel: Artycle[];
-    about_us: Artycle[];
-    services: Artycle[];
-    paiment_info: Artycle[];
-    contacts: Artycle[];
-    review: Artycle[];
+    whyme: Article[];
+    banner_carusel: Article[];
+    about_us: Article[];
+    services: Article[];
+    paiment_info: Article[];
+    contacts: Article[];
+    review: Article[];
 }

@@ -8,6 +8,15 @@ import {BootstrapVueNextResolver} from 'bootstrap-vue-next/resolvers'
 
 // https://vite.dev/config/
 export default defineConfig({
+  server: {
+    host: true,
+    proxy: {
+      // Прокси для основного API приложения
+      '^/api': {
+        target: 'http://api:8080',
+      },
+    }
+  },
   plugins: [
     vue(),
     vueDevTools(),

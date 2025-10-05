@@ -1,11 +1,11 @@
-import type { Artycle } from "../article";
+import type { Article } from "../article";
 import { testContacts } from "./contacts";
 
 export interface IContactsRepository {
-  getAll(): Promise<Artycle[]>;
-  getById(id: number): Promise<Artycle | undefined>;
-  create(article: Artycle): Promise<Artycle>;
-  update(article: Artycle): Promise<Artycle>;
+  getAll(): Promise<Article[]>;
+  getById(id: number): Promise<Article | undefined>;
+  create(article: Article): Promise<Article>;
+  update(article: Article): Promise<Article>;
   delete(id: number): Promise<void>;
 }
 
@@ -14,7 +14,7 @@ export interface IContactsRepository {
 
 
 export class TestContactsRepo implements IContactsRepository {
-  private articles: Artycle[] = [...testContacts];
+  private articles: Article[] = [...testContacts];
 
   async getAll() {
     return [...this.articles];
@@ -24,14 +24,14 @@ export class TestContactsRepo implements IContactsRepository {
     return this.articles.find(a => a.id === id);
   }
 
-  async create(article: Artycle) {
+  async create(article: Article) {
     const newId = Math.max(0, ...this.articles.map(a => a.id)) + 1;
     const newArticle = { ...article, id: newId };
     this.articles.push(newArticle);
     return newArticle;
   }
 
-  async update(article: Artycle) {
+  async update(article: Article) {
     const index = this.articles.findIndex(a => a.id === article.id);
     if (index === -1) throw new Error('Article not found');
     this.articles[index] = { ...article };
@@ -44,34 +44,34 @@ export class TestContactsRepo implements IContactsRepository {
 }
 
 export class ApiContactsRepo implements IContactsRepository {
-  private baseUrl = 'https://api.example.com/whyme';
+  private baseUrl = 'api/Contacts';
 
   async getAll() {
     const response = await fetch(this.baseUrl);
-    return response.json() as Promise<Artycle[]>;
+    return response.json() as Promise<Article[]>;
   }
 
   async getById(id: number) {
     const response = await fetch(`${this.baseUrl}/${id}`);
-    return response.json() as Promise<Artycle>;
+    return response.json() as Promise<Article>;
   }
 
-  async create(article: Artycle) {
+  async create(article: Article) {
     const response = await fetch(this.baseUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(article),
     });
-    return response.json() as Promise<Artycle>;
+    return response.json() as Promise<Article>;
   }
 
-  async update(article: Artycle) {
+  async update(article: Article) {
     const response = await fetch(`${this.baseUrl}/${article.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(article),
     });
-    return response.json() as Promise<Artycle>;
+    return response.json() as Promise<Article>;
   }
 
   async delete(id: number) {

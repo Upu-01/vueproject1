@@ -18,21 +18,7 @@
             </div>
         </BTab>
         <BTab title="Why Me">
-            <div class="container my-4">
-                <h2>Управление продуктами</h2>
-                <BButton variant="primary" class="mb-3" @click="showAddModalWhyMe = true">
-                    Добавить продукт
-                </BButton>
-        
-                <ArtycleTable :articles="articlesWhyMe" @edit="handleEditWhyMe" @delete="deleteWhyMe" />
-
-        <!---- Модальное окно для добавления-->
-                <ArtycleFormModal v-model="showAddModalWhyMe" title="Добавить" @save="saveNewWhyMe" /> 
-
-        <!-- Модальное окно для редактирования -->
-                <ArtycleFormModal v-model="showEditModalWhyMe" title="Редактировать" :article="selectedArtycle"
-                @save="saveEditedWhyMe" /> 
-            </div>
+            <WhyMeAdmin />
         </BTab>
         <BTab title="Banner Carusel">
             <div class="container my-4">
@@ -136,6 +122,9 @@
                 @save="saveReviews" /> 
             </div>
         </BTab>
+        <BTab title="Картинки">
+            <ImgAdmin />
+        </BTab>
     </BTabs>
 </template>
 
@@ -148,7 +137,7 @@ import ProductFormModal from '../widgets/product/admin//ProductFormModal.vue';
 import type { Product } from '@/shared/api/types/product';
 import ArtycleTable from '@/widgets/ArticleAdmin/ArtycleTable.vue';
 import ArtycleFormModal from '@/widgets/ArticleAdmin/ArtycleFormModal.vue';
-import type { Artycle } from '@/shared/api/article';
+import type { Article } from '@/shared/api/article';
 import { useWhyMeStore } from '@/entities/whymeStore';
 import { useBannerCaruselStore } from '@/entities/bannercaruselStore';
 import { useAboutUsStore } from '@/entities/aboutUsStore';
@@ -156,9 +145,11 @@ import { useServicesStore } from '@/entities/servicesStore';
 import { usePaimentInfoStore } from '@/entities/paimentInfoStore';
 import { useContactsStore } from '@/entities/contactsStore';
 import { useReviewStore } from '@/entities/reviewStore';
+import ImgAdmin from '@/widgets/img/admin/ImgAdmin.vue';
+import WhyMeAdmin from '@/widgets/whyMe/admin/WhyMeAdmin.vue';
 
 export default defineComponent({
-    components: { ProductTable, ProductFormModal, BButton, ArtycleFormModal, ArtycleTable },
+    components: { ProductTable, ProductFormModal, BButton, ArtycleFormModal, ArtycleTable, ImgAdmin, WhyMeAdmin },
     setup() {
         const productStore = useProductStore();
         const products = computed(() => productStore.products);
@@ -209,7 +200,7 @@ export default defineComponent({
         const articlesReviews = computed(() => reviewStore.articles);
         console.log(articlesReviews);
 
-        const selectedArtycle = ref<Artycle | null>(null);
+        const selectedArtycle = ref<Article | null>(null);
 
 
         const handleEdit = (product: Product) => {
@@ -224,37 +215,37 @@ export default defineComponent({
         //     showEditModal.value = true;
         // };
 
-        const handleEditWhyMe = (article: Artycle) => {
+        const handleEditWhyMe = (article: Article) => {
             selectedArtycle.value = article;
             showEditModalWhyMe.value = true;
         };
 
-        const handleEditBannerCarusel = (article: Artycle) => {
+        const handleEditBannerCarusel = (article: Article) => {
             selectedArtycle.value = article;
             showEditModalBannerCarusel.value = true;
         };
 
-        const handleEditAboutUs = (article: Artycle) => {
+        const handleEditAboutUs = (article: Article) => {
             selectedArtycle.value = article;
             showEditModalAboutUs.value = true;
         };
 
-        const handleEditServices = (article: Artycle) => {
+        const handleEditServices = (article: Article) => {
             selectedArtycle.value = article;
             showEditModalServices.value = true;
         };
 
-        const handleEditPaimentInfo = (article: Artycle) => {
+        const handleEditPaimentInfo = (article: Article) => {
             selectedArtycle.value = article;
             showEditModalPaimentInfo.value = true;
         };
 
-        const handleEditContacts = (article: Artycle) => {
+        const handleEditContacts = (article: Article) => {
             selectedArtycle.value = article;
             showEditModalContacts.value = true;
         };
 
-        const handleEditReviews = (article: Artycle) => {
+        const handleEditReviews = (article: Article) => {
             selectedArtycle.value = article;
             showEditModalReviews.value = true;
         };
@@ -267,43 +258,43 @@ export default defineComponent({
             showAddModal.value = false;
         };
 
-        const saveNewWhyMe = async (artycleData: Omit<Artycle, 'id'>) => {
+        const saveNewWhyMe = async (artycleData: Omit<Article, 'id'>) => {
 
             await whyMeStore.addArticle({ id: 0, ...artycleData });
             showAddModalWhyMe.value = false;
         };
 
-        const saveBannerCarusel = async (artycleData: Omit<Artycle, 'id'>) => {
+        const saveBannerCarusel = async (artycleData: Omit<Article, 'id'>) => {
 
             await bannerCaruselStore.addArticle({ id: 0, ...artycleData });
             showAddModalBannerCarusel.value = false;
         };
 
-        const saveAboutUs = async (artycleData: Omit<Artycle, 'id'>) => {
+        const saveAboutUs = async (artycleData: Omit<Article, 'id'>) => {
 
             await aboutUsStore.addArticle({ id: 0, ...artycleData });
             showAddModalAboutUs.value = false;
         };
 
-        const saveServices = async (artycleData: Omit<Artycle, 'id'>) => {
+        const saveServices = async (artycleData: Omit<Article, 'id'>) => {
 
             await servicesStore.addArticle({ id: 0, ...artycleData });
             showAddModalServices.value = false;
         };
 
-        const savePaimentInfo = async (artycleData: Omit<Artycle, 'id'>) => {
+        const savePaimentInfo = async (artycleData: Omit<Article, 'id'>) => {
 
             await paimentInfoStore.addArticle({ id: 0, ...artycleData });
             showAddModalPaimentInfo.value = false;
         };
 
-        const saveContacts = async (artycleData: Omit<Artycle, 'id'>) => {
+        const saveContacts = async (artycleData: Omit<Article, 'id'>) => {
 
             await contactsStore.addArticle({ id: 0, ...artycleData });
             showAddModalContacts.value = false;
         };
 
-        const saveReviews = async (artycleData: Omit<Artycle, 'id'>) => {
+        const saveReviews = async (artycleData: Omit<Article, 'id'>) => {
 
             await reviewStore.addArticle({ id: 0, ...artycleData });
             showAddModalReviews.value = false;
@@ -322,7 +313,7 @@ export default defineComponent({
             }
         };
 
-        const saveEditedWhyMe = async (artycleData: Omit<Artycle, 'id'>) => {
+        const saveEditedWhyMe = async (artycleData: Omit<Article, 'id'>) => {
             if (selectedArtycle.value) {
                 const updatedArtycle = { ...selectedArtycle.value, ...artycleData };
                 await whyMeStore.updateArticle(updatedArtycle);
@@ -331,7 +322,7 @@ export default defineComponent({
             }
         };
 
-        const saveEditedBannerCarusel = async (artycleData: Omit<Artycle, 'id'>) => {
+        const saveEditedBannerCarusel = async (artycleData: Omit<Article, 'id'>) => {
             if (selectedArtycle.value) {
                 const updatedArtycle = { ...selectedArtycle.value, ...artycleData };
                 await bannerCaruselStore.updateArticle(updatedArtycle);
@@ -339,7 +330,7 @@ export default defineComponent({
                 selectedArtycle.value = null;
             }
         };
-        const saveEditedAboutUs = async (artycleData: Omit<Artycle, 'id'>) => {
+        const saveEditedAboutUs = async (artycleData: Omit<Article, 'id'>) => {
             if (selectedArtycle.value) {
                 const updatedArtycle = { ...selectedArtycle.value, ...artycleData };
                 await aboutUsStore.updateArticle(updatedArtycle);
@@ -348,7 +339,7 @@ export default defineComponent({
             }
         };
 
-        const saveEditedServices = async (artycleData: Omit<Artycle, 'id'>) => {
+        const saveEditedServices = async (artycleData: Omit<Article, 'id'>) => {
             if (selectedArtycle.value) {
                 const updatedArtycle = { ...selectedArtycle.value, ...artycleData };
                 await servicesStore.updateArticle(updatedArtycle);
@@ -357,7 +348,7 @@ export default defineComponent({
             }
         };
 
-        const saveEditedPaimentInfo = async (artycleData: Omit<Artycle, 'id'>) => {
+        const saveEditedPaimentInfo = async (artycleData: Omit<Article, 'id'>) => {
             if (selectedArtycle.value) {
                 const updatedArtycle = { ...selectedArtycle.value, ...artycleData };
                 await paimentInfoStore.updateArticle(updatedArtycle);
@@ -366,7 +357,7 @@ export default defineComponent({
             }
         };
 
-        const saveEditedContacts = async (artycleData: Omit<Artycle, 'id'>) => {
+        const saveEditedContacts = async (artycleData: Omit<Article, 'id'>) => {
             if (selectedArtycle.value) {
                 const updatedArtycle = { ...selectedArtycle.value, ...artycleData };
                 await contactsStore.updateArticle(updatedArtycle);
@@ -375,7 +366,7 @@ export default defineComponent({
             }
         };
 
-        const saveEditedReview = async (artycleData: Omit<Artycle, 'id'>) => {
+        const saveEditedReview = async (artycleData: Omit<Article, 'id'>) => {
             if (selectedArtycle.value) {
                 const updatedArtycle = { ...selectedArtycle.value, ...artycleData };
                 await reviewStore.updateArticle(updatedArtycle);

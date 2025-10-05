@@ -1,28 +1,28 @@
-import type { Artycle } from "../api/article";
+import type { Article } from "../api/article";
 
 
-export const testBannerCarusel: Artycle[] = [
+export const testBannerCarusel: Article[] = [
     {
         image: [],
         icon: [],
-        title: "Заголовок 1",
-        text: "Содержимое 1",
+        name: "Заголовок 1",
+        HtmlText: "Содержимое 1",
         rating: 0,
         id: 1
     },
     {
         image: [],
         icon: [],
-        title: "Заголовок 2",
-        text: "Содержимое 2",
+        name: "Заголовок 2",
+        HtmlText: "Содержимое 2",
         rating: 0,
         id: 2
     },
     {
         image: [],
         icon: [],
-        title: "Заголовок 3",
-        text: "Содержимое 3",
+        name: "Заголовок 3",
+        HtmlText: "Содержимое 3",
         rating: 0,
         id: 3
     }

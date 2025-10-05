@@ -13,6 +13,7 @@ import { useServicesStore } from './entities/servicesStore'
 import { usePaimentInfoStore } from './entities/paimentInfoStore'
 import { useContactsStore } from './entities/contactsStore'
 import { useReviewStore } from './entities/reviewStore'
+import { useFileStore } from './entities/fileStore'
 
 const app = createApp(App)
 
@@ -23,25 +24,28 @@ function initializeStores() {
   productStore.init(false); // или false, по необходимости
 
   const whyMeStore = useWhyMeStore();
-  whyMeStore.init(false);
+  whyMeStore.init(true);
 
   const bannerCaruselStore = useBannerCaruselStore();
-  bannerCaruselStore.init(false);
+  bannerCaruselStore.init(true);
 
   const aboutUsStore = useAboutUsStore();
-  aboutUsStore.init(false);
+  aboutUsStore.init(true);
 
   const servicesStore = useServicesStore();
-  servicesStore.init(false);
+  servicesStore.init(true);
   
   const paimentInfoStore = usePaimentInfoStore();
-  paimentInfoStore.init(false);
+  paimentInfoStore.init(true);
 
   const contactsStore = useContactsStore();
-  contactsStore.init(false);
+  contactsStore.init(true);
 
   const reviewStore = useReviewStore();
-  reviewStore.init(false);
+  reviewStore.init(true);
+
+  const fileStore = useFileStore();
+  fileStore.init();
   // Аналогично для других стора:
   // const anotherStore = useAnotherStore();
   // anotherStore.init();
@@ -49,3 +53,4 @@ function initializeStores() {
 
 initializeStores();
 app.mount('#app')
+

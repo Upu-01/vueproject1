@@ -5,10 +5,10 @@ import type { BaseEntity } from "./types/types";
 
 
 
-export interface Artycle extends BaseEntity{
-    image: Image[];
-    icon: Badge[];
-    title: string;
-    text: string;
+export interface Article extends BaseEntity{
+    image: Image;
+    icon: Image | null;
+    name: string;
+    HtmlText: string;
     rating: number;
 }

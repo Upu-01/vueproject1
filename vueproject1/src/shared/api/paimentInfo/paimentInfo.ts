@@ -1,28 +1,28 @@
-import type { Artycle } from "../article";
+import type { Article } from "../article";
 
 
-export const testPaimentInfo: Artycle[] = [
+export const testPaimentInfo: Article[] = [
     {
         image: [],
         icon: [],
-        title: "Заголовок 1",
-        text: "Описание 1",
+        name: "Заголовок 1",
+        HtmlText: "Описание 1",
         rating: 0,
         id: 1
     },
     {
         image: [],
         icon: [],
-        title: "Заголовок 2",
-        text: "Описание 2",
+        name: "Заголовок 2",
+        HtmlText: "Описание 2",
         rating: 0,
         id: 2
     },
     {
         image: [],
         icon: [],
-        title: "Заголовок 3",
-        text: "Описание 3",
+        name: "Заголовок 3",
+        HtmlText: "Описание 3",
         rating: 0,
         id: 3
     }

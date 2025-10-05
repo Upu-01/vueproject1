@@ -14,12 +14,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { BTable, BButton } from 'bootstrap-vue-next';
-import type { Artycle } from '@/shared/api/article';
+import type { Article } from '@/shared/api/article';
 
 export default defineComponent({
   props: {
     articles: {
-      type: Array as () => Artycle[],
+      type: Array as () => Article[],
       required: true
     }
   },
